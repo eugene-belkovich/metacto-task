@@ -16,10 +16,20 @@ declare module 'fastify' {
   }
 }
 
+const MOCK_USER: TokenPayload = {
+  userId: '000000000000000000000001',
+  email: 'test@example.com',
+};
+
 export const jwtAuthGuard = async (
   request: FastifyRequest,
   _reply: FastifyReply
 ): Promise<void> => {
+  if (env.JWT_AUTH_DISABLED) {
+    request.user = MOCK_USER;
+    return;
+  }
+
   const authHeader = request.headers.authorization;
 
   if (!authHeader) {
@@ -46,11 +56,15 @@ export const jwtAuthGuard = async (
   }
 };
 
-// Optional auth guard - doesn't throw if no token, but sets user if valid token exists
 export const optionalAuthGuard = async (
   request: FastifyRequest,
   _reply: FastifyReply
 ): Promise<void> => {
+  if (env.JWT_AUTH_DISABLED) {
+    request.user = MOCK_USER;
+    return;
+  }
+
   const authHeader = request.headers.authorization;
 
   if (!authHeader) {
@@ -67,6 +81,5 @@ export const optionalAuthGuard = async (
     const decoded = jwt.verify(token, env.JWT_SECRET) as TokenPayload;
     request.user = decoded;
   } catch {
-    // Silently ignore invalid tokens for optional auth
   }
 };
