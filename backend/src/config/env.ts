@@ -20,6 +20,7 @@ export const env = {
   RATE_LIMIT_WINDOW_MS: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '60000', 10),
 
   // Cache
+  CACHE_ENABLED: process.env.CACHE_ENABLED === 'true', // Off by default
   CACHE_TTL_SECONDS: parseInt(process.env.CACHE_TTL_SECONDS || '60', 10),
 
   // CORS

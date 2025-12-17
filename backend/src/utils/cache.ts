@@ -1,10 +1,16 @@
 import { ICache } from '../interfaces/cache.interface';
 import { NodeCacheAdapter } from './node-cache.adapter';
+import { NoOpCacheAdapter } from './noop-cache.adapter';
 import { env } from '../config';
 
-export type CacheType = 'node-cache' | 'redis';
+export type CacheType = 'node-cache' | 'redis' | 'none';
 
 export function createCache(type: CacheType = 'node-cache'): ICache {
+  // If caching is disabled, return no-op adapter
+  if (!env.CACHE_ENABLED) {
+    return new NoOpCacheAdapter();
+  }
+
   switch (type) {
     case 'node-cache':
       return new NodeCacheAdapter({
@@ -16,6 +22,8 @@ export function createCache(type: CacheType = 'node-cache'): ICache {
       // When Redis is needed, implement RedisAdapter and use it here
       // return new RedisAdapter();
       throw new Error('Redis cache is not yet implemented. Use node-cache instead.');
+    case 'none':
+      return new NoOpCacheAdapter();
     default:
       return new NodeCacheAdapter({
         stdTTL: env.CACHE_TTL_SECONDS,
