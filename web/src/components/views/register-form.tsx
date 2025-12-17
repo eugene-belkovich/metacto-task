@@ -55,7 +55,7 @@ export function RegisterForm() {
             placeholder="••••••••"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            minLength={8}
+            minLength={3}
             required
           />
         </CardContent>
