@@ -167,3 +167,5 @@ Double check @backend/postman-collection.json and web hooks in @web/src/hooks/ t
 
 Proceed with to implement the application according to the tasks listed in tasks.md. Start with Phase 7 with all sub phases in it if its not finished
 yet (tasks marked as [ ] but not [x]). Mark tasks as done [x] upon completion only if the task is fully implemented and the code compiles without errors. Please DO NOT start a new phase until i explicitly ask you. Ignore postponed points or points with [-].
+
+fix issue for mobile
