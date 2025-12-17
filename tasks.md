@@ -4,56 +4,56 @@
 
 ### 1.1 Project Initialization
 
-- [ ] 1. Create `backend/` directory structure
-- [ ] 2. Initialize Node.js project with `npm init`
-- [ ] 3. Install TypeScript and configure `tsconfig.json`
-- [ ] 4. Install Fastify 5 and core dependencies
-- [ ] 5. Install Fastify plugins: `@fastify/cors`, `@fastify/helmet`, `@fastify/rate-limit`
-- [ ] 6. Set up Pino logger configuration
-- [ ] 7. Install and configure Vitest with `vitest.config.ts`
-- [ ] 8. Create `src/config/env.ts` for environment variable parsing
-- [ ] 9. Create `src/config/index.ts` to aggregate config exports
-- [ ] 10. Create `.env.example` with all required variables
-- [ ] 11. Create `src/server.ts` entry point with Fastify instance
+- [x] 1. Create `backend/` directory structure
+- [x] 2. Initialize Node.js project with `npm init`
+- [x] 3. Install TypeScript and configure `tsconfig.json`
+- [x] 4. Install Fastify 5 and core dependencies
+- [x] 5. Install Fastify plugins: `@fastify/cors`, `@fastify/helmet`, `@fastify/rate-limit`
+- [x] 6. Set up Pino logger configuration
+- [x] 7. Install and configure Vitest with `vitest.config.ts`
+- [x] 8. Create `src/config/env.ts` for environment variable parsing
+- [x] 9. Create `src/config/index.ts` to aggregate config exports
+- [x] 10. Create `.env.example` with all required variables
+- [x] 11. Create `src/server.ts` entry point with Fastify instance
 
 ### 1.2 Dependency Injection Setup
 
-- [ ] 12. Install Inversify and `reflect-metadata`
-- [ ] 13. Create `src/types/di.types.ts` with DI symbols
-- [ ] 14. Create `src/interfaces/repository.interface.ts` base interface
-- [ ] 15. Create `src/interfaces/service.interface.ts` base interface
-- [ ] 16. Create `src/di-container.ts` IoC container setup
-- [ ] 17. Configure container bindings for services and repositories
+- [x] 12. Install Inversify and `reflect-metadata`
+- [x] 13. Create `src/types/di.types.ts` with DI symbols
+- [x] 14. Create `src/interfaces/repository.interface.ts` base interface
+- [x] 15. Create `src/interfaces/service.interface.ts` base interface
+- [x] 16. Create `src/di-container.ts` IoC container setup
+- [x] 17. Configure container bindings for services and repositories
 
 ### 1.3 Database Layer
 
-- [ ] 18. Install Mongoose 9
-- [ ] 19. Create `src/config/database.ts` with MongoDB connection logic
-- [ ] 20. Create `src/models/user.model.ts` with schema and indexes
-- [ ] 21. Create `src/models/feature.model.ts` with schema and indexes
-- [ ] 22. Create `src/models/vote.model.ts` with schema and compound unique index
-- [ ] 23. Create `src/interfaces/user.interface.ts`
-- [ ] 24. Create `src/interfaces/feature.interface.ts`
-- [ ] 25. Create `src/interfaces/vote.interface.ts`
-- [ ] 26. Create `src/repositories/user.repository.ts`
-- [ ] 27. Create `src/repositories/feature.repository.ts`
-- [ ] 28. Create `src/repositories/vote.repository.ts`
-- [ ] 29. Add index on `users.email` (unique)
-- [ ] 30. Add index on `features.author`
-- [ ] 31. Add index on `features.status`
-- [ ] 32. Add index on `features.voteCount`
-- [ ] 33. Add compound index on `votes.user + votes.feature` (unique)
+- [x] 18. Install Mongoose 9
+- [x] 19. Create `src/config/database.ts` with MongoDB connection logic
+- [x] 20. Create `src/models/user.model.ts` with schema and indexes
+- [x] 21. Create `src/models/feature.model.ts` with schema and indexes
+- [x] 22. Create `src/models/vote.model.ts` with schema and compound unique index
+- [x] 23. Create `src/interfaces/user.interface.ts`
+- [x] 24. Create `src/interfaces/feature.interface.ts`
+- [x] 25. Create `src/interfaces/vote.interface.ts`
+- [x] 26. Create `src/repositories/user.repository.ts`
+- [x] 27. Create `src/repositories/feature.repository.ts`
+- [x] 28. Create `src/repositories/vote.repository.ts`
+- [x] 29. Add index on `users.email` (unique)
+- [x] 30. Add index on `features.author`
+- [x] 31. Add index on `features.status`
+- [x] 32. Add index on `features.voteCount`
+- [x] 33. Add compound index on `votes.user + votes.feature` (unique)
 
 ### 1.4 Error Handling
 
-- [ ] 34. Create `src/errors/app.error.ts` base error class
-- [ ] 35. Create `src/errors/not-found.error.ts`
-- [ ] 36. Create `src/errors/unauthorized.error.ts`
-- [ ] 37. Create `src/errors/forbidden.error.ts`
-- [ ] 38. Create `src/errors/validation.error.ts`
-- [ ] 39. Create `src/errors/index.ts` to export all errors
-- [ ] 40. Implement global error handler in Fastify
-- [ ] 41. Define consistent error response format with statusCode, error, message, details
+- [x] 34. Create `src/errors/app.error.ts` base error class
+- [x] 35. Create `src/errors/not-found.error.ts`
+- [x] 36. Create `src/errors/unauthorized.error.ts`
+- [x] 37. Create `src/errors/forbidden.error.ts`
+- [x] 38. Create `src/errors/validation.error.ts`
+- [x] 39. Create `src/errors/index.ts` to export all errors
+- [x] 40. Implement global error handler in Fastify
+- [x] 41. Define consistent error response format with statusCode, error, message, details
 
 ---
 

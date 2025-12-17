@@ -120,3 +120,5 @@ Read the file `requirements.md` extract key goals and constraints, and create a 
 
 Use `roadmap.md` Create a detailed list of actionable improvement tasks and save it as an enumerated checklist to `tasks.md`. Each item should start with a placeholder [ ] to be checked off when completed. Ensure the tasks are logically ordered and cover both architectural and code-level improvements. Ignore postponed points.
 
+Proceed with to implement the application according to the tasks listed in tasks.md. Start with Phase 1 with all sub phases in it if its not finished yet (tasks marked as [ ] but not [x]). Mark tasks as done [x] upon completion only if the task is fully implemented and the code compiles without errors. Please DO NOT start a new phase until i explicitly ask you. Ignore postponed points or points with [-].
+
