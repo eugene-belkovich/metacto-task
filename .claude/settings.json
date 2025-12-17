@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": ["*"],
+    "deny": [
+      "Bash(git push *)",
+      "Bash(git push)",
+      "Bash(git reset --hard *)",
+      "Bash(git clean -fd *)",
+      "Bash(git checkout -- *)",
+      "Bash(rm -rf *)",
+      "Bash(npm publish *)"
+    ]
+  },
+  "instructions": "Do not add comments to code during generation. Write clean code without inline comments, JSDoc comments, or explanatory comments unless explicitly requested."
+}

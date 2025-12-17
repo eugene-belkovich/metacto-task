@@ -3,6 +3,8 @@ import mongoose from 'mongoose';
 import { TYPES } from '../types/di.types';
 import { IVoteRepository, VoteType, IVoteStats, IVoteDocument } from '../interfaces/vote.interface';
 import { IFeatureRepository } from '../interfaces/feature.interface';
+import { ICache } from '../interfaces/cache.interface';
+import { CacheKeys, CacheTTL } from '../utils/cache';
 import { NotFoundError } from '../errors';
 
 export interface VoteResponse {
@@ -24,7 +26,8 @@ export interface IVoteService {
 export class VoteService implements IVoteService {
   constructor(
     @inject(TYPES.VoteRepository) private voteRepository: IVoteRepository,
-    @inject(TYPES.FeatureRepository) private featureRepository: IFeatureRepository
+    @inject(TYPES.FeatureRepository) private featureRepository: IFeatureRepository,
+    @inject(TYPES.Cache) private cache: ICache
   ) {}
 
   async vote(featureId: string, userId: string, type: VoteType): Promise<VoteResponse> {
@@ -52,6 +55,8 @@ export class VoteService implements IVoteService {
         const increment = oldType === 'up' ? -2 : 2;
         await this.featureRepository.updateVoteCount(featureId, increment);
 
+        await this.invalidateVoteCache(featureId);
+
         return this.serializeVote(updatedVote);
       }
       return this.serializeVote(existingVote);
@@ -68,6 +73,8 @@ export class VoteService implements IVoteService {
     const increment = type === 'up' ? 1 : -1;
     await this.featureRepository.updateVoteCount(featureId, increment);
 
+    await this.invalidateVoteCache(featureId);
+
     return this.serializeVote(vote);
   }
 
@@ -81,16 +88,33 @@ export class VoteService implements IVoteService {
     const decrement = existingVote.type === 'up' ? -1 : 1;
     await this.featureRepository.updateVoteCount(featureId, decrement);
 
-    return this.voteRepository.deleteByUserAndFeature(userId, featureId);
+    const result = await this.voteRepository.deleteByUserAndFeature(userId, featureId);
+
+    await this.invalidateVoteCache(featureId);
+
+    return result;
   }
 
   async getVoteStats(featureId: string): Promise<IVoteStats> {
+    const cacheKey = CacheKeys.voteStats(featureId);
+
+    // Try to get from cache first
+    const cached = await this.cache.get<IVoteStats>(cacheKey);
+    if (cached) {
+      return cached;
+    }
+
     const feature = await this.featureRepository.findById(featureId);
     if (!feature) {
       throw new NotFoundError('Feature not found');
     }
 
-    return this.voteRepository.getVoteStats(featureId);
+    const stats = await this.voteRepository.getVoteStats(featureId);
+
+    // Cache the result
+    await this.cache.set(cacheKey, stats, CacheTTL.VOTE_STATS);
+
+    return stats;
   }
 
   async getUserVote(featureId: string, userId: string): Promise<VoteResponse | null> {
@@ -109,5 +133,19 @@ export class VoteService implements IVoteService {
       type: vote.type,
       createdAt: vote.createdAt,
     };
+  }
+
+  private async invalidateVoteCache(featureId: string): Promise<void> {
+    // Invalidate vote stats cache
+    await this.cache.del(CacheKeys.voteStats(featureId));
+
+    // Also invalidate feature caches since voteCount changed
+    const keys = await this.cache.keys();
+    const featureKeys = keys.filter(
+      (key) => key.startsWith('features:list:') || key === `features:${featureId}`
+    );
+    if (featureKeys.length > 0) {
+      await this.cache.del(featureKeys);
+    }
   }
 }

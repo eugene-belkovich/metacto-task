@@ -21,9 +21,14 @@ import { UserController, IUserController } from './controllers/user.controller';
 import { FeatureController, IFeatureController } from './controllers/feature.controller';
 import { VoteController, IVoteController } from './controllers/vote.controller';
 
+import { ICache } from './interfaces/cache.interface';
+import { createCache } from './utils/cache';
+
 const container = new Container();
 
 export function configureContainer(): Container {
+  container.bind<ICache>(TYPES.Cache).toConstantValue(createCache('node-cache'));
+
   // Repository bindings
   container.bind<IUserRepository>(TYPES.UserRepository).to(UserRepository).inSingletonScope();
   container.bind<IFeatureRepository>(TYPES.FeatureRepository).to(FeatureRepository).inSingletonScope();

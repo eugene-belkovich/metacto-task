@@ -24,14 +24,10 @@ const voteSchema = new Schema<IVoteDocument>(
   }
 );
 
-// Compound unique index on user + feature - Task 33
-// Ensures one vote per user per feature
 voteSchema.index({ user: 1, feature: 1 }, { unique: true });
 
-// Index for querying votes by feature
 voteSchema.index({ feature: 1 });
 
-// Index for querying votes by user
 voteSchema.index({ user: 1 });
 
 export const VoteModel = mongoose.model<IVoteDocument>('Vote', voteSchema);

@@ -8,6 +8,8 @@ import {
 } from '../interfaces/feature.interface';
 import { IUserRepository } from '../interfaces/user.interface';
 import { PaginatedResult, PaginationOptions } from '../interfaces/repository.interface';
+import { ICache } from '../interfaces/cache.interface';
+import { CacheKeys, CacheTTL } from '../utils/cache';
 import { NotFoundError, ForbiddenError } from '../errors';
 import mongoose from 'mongoose';
 
@@ -41,13 +43,15 @@ export interface IFeatureService {
   findById(id: string): Promise<FeatureResponse>;
   updateStatus(id: string, status: FeatureStatus, userId: string): Promise<FeatureResponse>;
   delete(id: string, userId: string): Promise<boolean>;
+  invalidateCache(): Promise<void>;
 }
 
 @injectable()
 export class FeatureService implements IFeatureService {
   constructor(
     @inject(TYPES.FeatureRepository) private featureRepository: IFeatureRepository,
-    @inject(TYPES.UserRepository) private userRepository: IUserRepository
+    @inject(TYPES.UserRepository) private userRepository: IUserRepository,
+    @inject(TYPES.Cache) private cache: ICache
   ) {}
 
   async create(data: CreateFeatureDTO): Promise<FeatureResponse> {
@@ -63,6 +67,8 @@ export class FeatureService implements IFeatureService {
       author: new mongoose.Types.ObjectId(data.authorId),
     });
 
+    await this.invalidateListCache();
+
     return this.serializeFeature(feature, author);
   }
 
@@ -70,6 +76,19 @@ export class FeatureService implements IFeatureService {
     filter: IFeatureFilter,
     pagination: PaginationOptions
   ): Promise<PaginatedResult<FeatureResponse>> {
+    const cacheKey = CacheKeys.featuresList(
+      filter.status || 'all',
+      pagination.page || 1,
+      pagination.limit || 10,
+      pagination.sortBy || 'newest'
+    );
+
+    // Try to get from cache first
+    const cached = await this.cache.get<PaginatedResult<FeatureResponse>>(cacheKey);
+    if (cached) {
+      return cached;
+    }
+
     // Map sort parameter to database field
     let sortBy = 'createdAt';
     let sortOrder: 'asc' | 'desc' = 'desc';
@@ -91,19 +110,37 @@ export class FeatureService implements IFeatureService {
       sortOrder,
     });
 
-    return {
+    const response = {
       ...result,
       data: result.data.map((feature) => this.serializeFeatureWithPopulatedAuthor(feature)),
     };
+
+    // Cache the result
+    await this.cache.set(cacheKey, response, CacheTTL.FEATURES_LIST);
+
+    return response;
   }
 
   async findById(id: string): Promise<FeatureResponse> {
+    const cacheKey = CacheKeys.featureById(id);
+
+    // Try to get from cache first
+    const cached = await this.cache.get<FeatureResponse>(cacheKey);
+    if (cached) {
+      return cached;
+    }
+
     const feature = await this.featureRepository.findByIdWithAuthor(id);
     if (!feature) {
       throw new NotFoundError('Feature not found');
     }
 
-    return this.serializeFeatureWithPopulatedAuthor(feature);
+    const response = this.serializeFeatureWithPopulatedAuthor(feature);
+
+    // Cache the result
+    await this.cache.set(cacheKey, response, CacheTTL.FEATURE_BY_ID);
+
+    return response;
   }
 
   async updateStatus(
@@ -126,6 +163,8 @@ export class FeatureService implements IFeatureService {
       throw new NotFoundError('Feature not found');
     }
 
+    await this.invalidateFeatureCache(id);
+
     return this.serializeFeatureWithPopulatedAuthor(updatedFeature);
   }
 
@@ -140,7 +179,11 @@ export class FeatureService implements IFeatureService {
       throw new ForbiddenError('Only the author can delete the feature');
     }
 
-    return this.featureRepository.delete(id);
+    const result = await this.featureRepository.delete(id);
+
+    await this.invalidateFeatureCache(id);
+
+    return result;
   }
 
   private serializeFeature(
@@ -184,5 +227,31 @@ export class FeatureService implements IFeatureService {
       createdAt: feature.createdAt,
       updatedAt: feature.updatedAt,
     };
+  }
+
+  // Cache invalidation methods
+  private async invalidateListCache(): Promise<void> {
+    // Get all cache keys and delete those matching features:list:*
+    const keys = await this.cache.keys();
+    const listKeys = keys.filter((key) => key.startsWith('features:list:'));
+    if (listKeys.length > 0) {
+      await this.cache.del(listKeys);
+    }
+  }
+
+  private async invalidateFeatureCache(featureId: string): Promise<void> {
+    // Invalidate specific feature cache
+    await this.cache.del(CacheKeys.featureById(featureId));
+    // Also invalidate list cache as the feature data changed
+    await this.invalidateListCache();
+  }
+
+  async invalidateCache(): Promise<void> {
+    // Invalidate all feature-related cache
+    const keys = await this.cache.keys();
+    const featureKeys = keys.filter((key) => key.startsWith('features:'));
+    if (featureKeys.length > 0) {
+      await this.cache.del(featureKeys);
+    }
   }
 }

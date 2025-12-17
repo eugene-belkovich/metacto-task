@@ -4,6 +4,7 @@ import { TYPES } from '../types/di.types';
 import { IVoteService } from '../services/vote.service';
 import { VoteBody, VoteParams } from '../schemas/vote.schema';
 import { UnauthorizedError } from '../errors';
+import { CacheTTL } from '../utils/cache';
 
 export interface IVoteController {
   vote(
@@ -60,6 +61,10 @@ export class VoteController implements IVoteController {
   ): Promise<void> {
     const { id: featureId } = request.params;
     const stats = await this.voteService.getVoteStats(featureId);
-    reply.status(200).send(stats);
+
+    reply
+      .header('Cache-Control', `public, max-age=${CacheTTL.VOTE_STATS}`)
+      .status(200)
+      .send(stats);
   }
 }

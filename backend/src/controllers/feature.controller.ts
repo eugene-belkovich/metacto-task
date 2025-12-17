@@ -9,6 +9,7 @@ import {
   FeatureParams,
 } from '../schemas/feature.schema';
 import { UnauthorizedError } from '../errors';
+import { CacheTTL } from '../utils/cache';
 
 export interface IFeatureController {
   create(
@@ -68,7 +69,10 @@ export class FeatureController implements IFeatureController {
       { page, limit, sortBy: sort }
     );
 
-    reply.status(200).send(result);
+    reply
+      .header('Cache-Control', `public, max-age=${CacheTTL.FEATURES_LIST}`)
+      .status(200)
+      .send(result);
   }
 
   async getById(
@@ -77,7 +81,11 @@ export class FeatureController implements IFeatureController {
   ): Promise<void> {
     const { id } = request.params;
     const feature = await this.featureService.findById(id);
-    reply.status(200).send(feature);
+
+    reply
+      .header('Cache-Control', `public, max-age=${CacheTTL.FEATURE_BY_ID}`)
+      .status(200)
+      .send(feature);
   }
 
   async updateStatus(

@@ -161,25 +161,25 @@
 
 ### 4.1 Cache Infrastructure
 
-- [ ] 119. Install node-cache package
-- [ ] 120. Create `src/interfaces/cache.interface.ts` abstraction
-- [ ] 121. Define `get()`, `set()`, `del()`, `flush()` methods in interface
-- [ ] 122. Create `src/utils/node-cache.adapter.ts` implementing interface
-- [ ] 123. Create `src/utils/redis.adapter.ts` implementing interface (optional)
-- [ ] 124. Create `src/utils/cache.ts` factory to select adapter
-- [ ] 125. Add Cache to DI container bindings
-- [ ] 126. Configure cache TTL values from environment
+- [x] 119. Install node-cache package
+- [x] 120. Create `src/interfaces/cache.interface.ts` abstraction
+- [x] 121. Define `get()`, `set()`, `del()`, `flush()` methods in interface
+- [x] 122. Create `src/utils/node-cache.adapter.ts` implementing interface
+- [x] 123. Create `src/utils/redis.adapter.ts` implementing interface (optional)
+- [x] 124. Create `src/utils/cache.ts` factory to select adapter
+- [x] 125. Add Cache to DI container bindings
+- [x] 126. Configure cache TTL values from environment
 
 ### 4.2 Cache Integration
 
-- [ ] 127. Add caching to `feature.service.findAll()` (60s TTL)
-- [ ] 128. Add caching to `feature.service.findById()` (30s TTL)
-- [ ] 129. Add caching to vote counts (10s TTL)
-- [ ] 130. Implement cache invalidation on feature create
-- [ ] 131. Implement cache invalidation on feature update
-- [ ] 132. Implement cache invalidation on feature delete
-- [ ] 133. Implement cache invalidation on vote
-- [ ] 134. Add Cache-Control headers to responses
+- [x] 127. Add caching to `feature.service.findAll()` (60s TTL)
+- [x] 128. Add caching to `feature.service.findById()` (30s TTL)
+- [x] 129. Add caching to vote counts (10s TTL)
+- [x] 130. Implement cache invalidation on feature create
+- [x] 131. Implement cache invalidation on feature update
+- [x] 132. Implement cache invalidation on feature delete
+- [x] 133. Implement cache invalidation on vote
+- [x] 134. Add Cache-Control headers to responses
 
 ---
 
