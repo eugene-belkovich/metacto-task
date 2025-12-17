@@ -1,0 +1,122 @@
+For each prompt I give you, write to a file prompts.txt, so I can audit the work
+
+i want to design a system for "Feature Voting".  let's make a simple object-oriented design API. I want to have users, features, and votes. Users can create features to vote on. Features can be voted on using votes. Features can be completed with a status change
+
+ok i like that. lets map this design to project structure. i need backend, web, mobile folder. backedn will contains simple Node.js TypeScript Fastify MongoDB implementation. on this step lets design a API requests
+
+use this structure for backend:
+⏺ Backend:
+  Stack
+
+  - Runtime: Node.js + TypeScript
+  - Framework: Fastify 5
+  - Database: MongoDB (Mongoose 9)
+  - DI: Inversify
+  - Logging: Pino
+  - Caching: node-cache
+  - Testing: Vitest
+  - Migrations: ts-migrate-mongoose
+
+  Architecture
+
+  Layered architecture with Dependency Injection:
+
+  src/
+  ├── server.ts              # Entry point
+  ├── di-container.ts        # Inversify IoC container
+  ├── config/                # Configuration
+  ├── routes/                # HTTP routes (user, health and etc)
+  ├── controllers/           # Request handlers
+  ├── services/              # Business logic ( user, feature votes)
+  ├── repository/            # Data access layer (user, feature votes)
+  ├── models/                # Mongoose models (user, feature votes)
+  ├── schemas/               # Validation schemas
+  ├── interfaces/            # TypeScript interfaces for DI
+  ├── guards/                # Auth middleware (jwt-auth)
+  ├── errors/                # Custom errors
+  ├── types/                 # DI types
+  └── utils/                 # Helpers (logger, cache, cors)
+
+
+
+  Security
+
+  - JWT
+  - Rate limiting (@fastify/rate-limit)
+  - CORS (@fastify/cors)
+  - Helmet (@fastify/helmet)
+
+use this structure for frontend:
+⏺ Frontend
+
+  Stack
+
+  - Runtime: Node.js + TypeScript
+  - Framework: Next.js 15 (App Router, Turbopack)
+  - React: 19
+  - State Management: Zustand
+  - Styling: Tailwind CSS 4
+  - HTTP Client: Axios
+  - Linting: Biome
+  - UI Utils: clsx, tailwind-merge, class-variance-authority
+  - Icons: lucide-react
+
+  Architecture
+
+  Next.js App Router structure:
+
+  src/
+  ├── app/
+  │   ├── layout.tsx         # Root layout
+  │   └── page.tsx           # Main page
+  ├── components/
+  │   ├── views/             # Page views (user, feature votes)
+  │   ├── cached-avatar.tsx
+  │   ├── features.tsx
+  │   ├── votes.tsx
+  ├── hooks/                 # Custom hooks
+  ├── store/                 # Zustand stores (features, votes)
+  ├── lib/                   # Utils (api, config, jwt, utils)
+  └── types/                 # TypeScript types
+
+use this structure for mobile:
+⏺ Mobile (React Native)
+
+  Stack
+
+  - Runtime: Node.js + TypeScript
+  - Framework: React Native + Expo (Expo Router)
+  - React: 19
+  - State Management: Zustand
+  - Styling: NativeWind (Tailwind for RN)
+  - HTTP Client: Axios
+  - Linting: Biome
+  - UI Utils: clsx, tailwind-merge, class-variance-authority
+  - Icons: lucide-react-native
+
+  Architecture
+
+  Expo Router structure:
+
+  src/
+  ├── app/
+  │   ├── _layout.tsx        # Root layout
+  │   └── index.tsx          # Main screen
+  ├── components/
+  │   ├── views/             # Screen views (user, feature votes)
+  │   ├── cached-avatar.tsx
+  │   ├── features.tsx
+  │   └── votes.tsx
+  ├── hooks/                 # Custom hooks
+  ├── store/                 # Zustand stores (features, votes)
+  ├── lib/                   # Utils (api, config, jwt, utils)
+  └── types/                 # TypeScript types
+
+Let's estimate and calculate the non-functional requirements and calculate the main load variables so that the system is reliable and stable. 3 scenarios (MVP / Growth / Viral)
+
+At this stage, my benchmark is MVP, but with some clarifications: up to 5,000 users, DAU up to 500, avg rps up to 1. I would like to add cloud managed redis as an option to my current design. Update the non-functional requirements and move them to a separate file, non-functional.md. Based on all the other requirements we have already discussed, create a file called requirements.md.
+
+Read the file `requirements.md` extract key goals and constraints, and create a detailed implementation roadmap for the project. The plan should describe the rationale for each proposed change and be saved to `roadmap.md`. Use clear section headers to organize the plan by theme or area of the system.
+
+Use `roadmap.md` Create a detailed list of actionable improvement tasks and save it as an enumerated checklist to `tasks.md`. Each item should start with a placeholder [ ] to be checked off when completed. Ensure the tasks are logically ordered and cover both architectural and code-level improvements. Ignore postponed points.
+
