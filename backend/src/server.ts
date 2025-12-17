@@ -6,8 +6,8 @@ import rateLimit from '@fastify/rate-limit';
 import { env, connectDatabase } from './config';
 import { logger } from './utils/logger';
 import { AppError } from './errors';
+import { registerRoutes } from './routes';
 
-// Error response format - Task 41
 interface ErrorResponse {
   statusCode: number;
   error: string;
@@ -48,7 +48,8 @@ const buildServer = async () => {
     timeWindow: env.RATE_LIMIT_WINDOW_MS,
   });
 
-  // Global error handler - Task 40
+  await registerRoutes(server);
+
   server.setErrorHandler(
     (error: FastifyError | AppError, _request: FastifyRequest, reply: FastifyReply) => {
       const response: ErrorResponse = {

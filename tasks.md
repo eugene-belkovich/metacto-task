@@ -61,29 +61,29 @@
 
 ### 2.1 Auth Service Implementation
 
-- [ ] 42. Install bcrypt for password hashing
-- [ ] 43. Install jsonwebtoken for JWT handling
-- [ ] 44. Create `src/utils/password.ts` with hash and compare functions
-- [ ] 45. Create `src/services/auth.service.ts`
-- [ ] 46. Implement `register()` method with password hashing
-- [ ] 47. Implement `login()` method with password verification
-- [ ] 48. Implement JWT token generation with 24h expiry
-- [ ] 49. Implement JWT token verification
-- [ ] 50. Add password validation rules (min length, complexity)
-- [ ] 51. Create `src/guards/jwt-auth.guard.ts` middleware
+- [x] 42. Install bcrypt for password hashing
+- [x] 43. Install jsonwebtoken for JWT handling
+- [x] 44. Create `src/utils/password.ts` with hash and compare functions
+- [x] 45. Create `src/services/auth.service.ts`
+- [x] 46. Implement `register()` method with password hashing
+- [x] 47. Implement `login()` method with password verification
+- [x] 48. Implement JWT token generation with 24h expiry
+- [x] 49. Implement JWT token verification
+- [x] 50. Add password validation rules (min length, complexity)
+- [x] 51. Create `src/guards/jwt-auth.guard.ts` middleware
 
 ### 2.2 Auth Routes & Controllers
 
-- [ ] 52. Create `src/schemas/auth.schema.ts` with validation schemas
-- [ ] 53. Define register request/response schema
-- [ ] 54. Define login request/response schema
-- [ ] 55. Create `src/controllers/auth.controller.ts`
-- [ ] 56. Implement register controller method
-- [ ] 57. Implement login controller method
-- [ ] 58. Create `src/routes/auth.routes.ts`
-- [ ] 59. Register POST `/api/auth/register` endpoint
-- [ ] 60. Register POST `/api/auth/login` endpoint
-- [ ] 61. Register auth routes in main server
+- [x] 52. Create `src/schemas/auth.schema.ts` with validation schemas
+- [x] 53. Define register request/response schema
+- [x] 54. Define login request/response schema
+- [x] 55. Create `src/controllers/auth.controller.ts`
+- [x] 56. Implement register controller method
+- [x] 57. Implement login controller method
+- [x] 58. Create `src/routes/auth.routes.ts`
+- [x] 59. Register POST `/api/auth/register` endpoint
+- [x] 60. Register POST `/api/auth/login` endpoint
+- [x] 61. Register auth routes in main server
 
 ---
 
