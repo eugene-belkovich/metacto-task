@@ -211,79 +211,79 @@
 
 ### 6.1 Project Setup
 
-- [ ] 149. Create `web/` directory structure
-- [ ] 150. Initialize Next.js 15 project with App Router
-- [ ] 151. Configure TypeScript in `tsconfig.json`
-- [ ] 152. Install and configure Tailwind CSS 4
-- [ ] 153. Create `tailwind.config.ts`
-- [ ] 154. Create `postcss.config.js`
-- [ ] 155. Install and configure Biome
-- [ ] 156. Create `biome.json` linting configuration
-- [ ] 157. Create `src/app/layout.tsx` root layout
-- [ ] 158. Create `src/app/page.tsx` home page
-- [ ] 159. Create `src/app/globals.css` with Tailwind imports
-- [ ] 160. Create `src/lib/config.ts` with API URL config
-- [ ] 161. Create `src/lib/utils.ts` with `cn()` helper
+- [x] 149. Create `web/` directory structure
+- [x] 150. Initialize Next.js 15 project with App Router
+- [x] 151. Configure TypeScript in `tsconfig.json`
+- [x] 152. Install and configure Tailwind CSS 4
+- [x] 153. Create `tailwind.config.ts`
+- [x] 154. Create `postcss.config.js`
+- [x] 155. Install and configure Biome
+- [x] 156. Create `biome.json` linting configuration
+- [x] 157. Create `src/app/layout.tsx` root layout
+- [x] 158. Create `src/app/page.tsx` home page
+- [x] 159. Create `src/app/globals.css` with Tailwind imports
+- [x] 160. Create `src/lib/config.ts` with API URL config
+- [x] 161. Create `src/lib/utils.ts` with `cn()` helper
 
 ### 6.2 API Client & State Management
 
-- [ ] 162. Install Axios
-- [ ] 163. Create `src/lib/api.ts` with Axios instance
-- [ ] 164. Add request interceptor for auth token injection
-- [ ] 165. Add response interceptor for error handling
-- [ ] 166. Create `src/lib/jwt.ts` with token storage helpers
-- [ ] 167. Install Zustand
-- [ ] 168. Create `src/store/auth.store.ts`
-- [ ] 169. Implement `user`, `token`, `isAuthenticated` state
-- [ ] 170. Implement `setAuth()`, `logout()` actions
-- [ ] 171. Create `src/store/features.store.ts`
-- [ ] 172. Implement `features`, `loading`, `filter`, `sortBy` state
-- [ ] 173. Implement `setFeatures()`, `addFeature()`, `updateFeature()`, `removeFeature()` actions
-- [ ] 174. Create `src/store/ui.store.ts` for UI state
-- [ ] 175. Create `src/types/user.ts`
-- [ ] 176. Create `src/types/feature.ts`
-- [ ] 177. Create `src/types/vote.ts`
-- [ ] 178. Create `src/types/api.ts` for API response types
+- [x] 162. Install Axios
+- [x] 163. Create `src/lib/api.ts` with Axios instance
+- [x] 164. Add request interceptor for auth token injection
+- [x] 165. Add response interceptor for error handling
+- [x] 166. Create `src/lib/jwt.ts` with token storage helpers
+- [x] 167. Install Zustand
+- [x] 168. Create `src/store/auth.store.ts`
+- [x] 169. Implement `user`, `token`, `isAuthenticated` state
+- [x] 170. Implement `setAuth()`, `logout()` actions
+- [x] 171. Create `src/store/features.store.ts`
+- [x] 172. Implement `features`, `loading`, `filter`, `sortBy` state
+- [x] 173. Implement `setFeatures()`, `addFeature()`, `updateFeature()`, `removeFeature()` actions
+- [x] 174. Create `src/store/ui.store.ts` for UI state
+- [x] 175. Create `src/types/user.ts`
+- [x] 176. Create `src/types/feature.ts`
+- [x] 177. Create `src/types/vote.ts`
+- [x] 178. Create `src/types/api.ts` for API response types
 
 ### 6.3 UI Components
 
-- [ ] 179. Install clsx, tailwind-merge, class-variance-authority
-- [ ] 180. Install lucide-react for icons
-- [ ] 181. Create `src/components/ui/button.tsx`
-- [ ] 182. Create `src/components/ui/input.tsx`
-- [ ] 183. Create `src/components/ui/card.tsx`
-- [ ] 184. Create `src/components/ui/badge.tsx`
-- [ ] 185. Create `src/components/ui/skeleton.tsx`
-- [ ] 186. Create `src/components/feature-card.tsx`
-- [ ] 187. Create `src/components/vote-buttons.tsx` with optimistic updates
-- [ ] 188. Create `src/components/status-badge.tsx`
-- [ ] 189. Create `src/components/navbar.tsx`
-- [ ] 190. Create `src/components/providers.tsx` for context providers
+- [x] 179. Install clsx, tailwind-merge, class-variance-authority
+- [x] 180. Install lucide-react for icons
+- [x] 181. Create `src/components/ui/button.tsx`
+- [x] 182. Create `src/components/ui/input.tsx`
+- [x] 183. Create `src/components/ui/card.tsx`
+- [x] 184. Create `src/components/ui/badge.tsx`
+- [x] 185. Create `src/components/ui/skeleton.tsx`
+- [x] 186. Create `src/components/feature-card.tsx`
+- [x] 187. Create `src/components/vote-buttons.tsx` with optimistic updates
+- [x] 188. Create `src/components/status-badge.tsx`
+- [x] 189. Create `src/components/navbar.tsx`
+- [x] 190. Create `src/components/providers.tsx` for context providers
 
 ### 6.4 Pages & Views
 
-- [ ] 191. Create `src/components/views/login-form.tsx`
-- [ ] 192. Create `src/components/views/register-form.tsx`
-- [ ] 193. Create `src/components/views/feature-list.tsx`
-- [ ] 194. Create `src/components/views/feature-detail.tsx`
-- [ ] 195. Create `src/app/login/page.tsx`
-- [ ] 196. Create `src/app/register/page.tsx`
-- [ ] 197. Create `src/app/features/page.tsx` with filters and sorting
-- [ ] 198. Create `src/app/features/new/page.tsx`
-- [ ] 199. Create `src/app/features/[id]/page.tsx`
-- [ ] 200. Implement protected route wrapper component
-- [ ] 201. Add redirect to login for unauthenticated users
+- [x] 191. Create `src/components/views/login-form.tsx`
+- [x] 192. Create `src/components/views/register-form.tsx`
+- [x] 193. Create `src/components/views/feature-list.tsx`
+- [x] 194. Create `src/components/views/feature-detail.tsx`
+- [x] 195. Create `src/app/login/page.tsx`
+- [x] 196. Create `src/app/register/page.tsx`
+- [x] 197. Create `src/app/features/page.tsx` with filters and sorting
+- [x] 198. Create `src/app/features/new/page.tsx`
+- [x] 199. Create `src/app/features/[id]/page.tsx`
+- [x] 200. Implement protected route wrapper component
+- [x] 201. Add redirect to login for unauthenticated users
 
 ### 6.5 Custom Hooks
 
-- [ ] 202. Create `src/hooks/use-auth.ts`
-- [ ] 203. Implement login, register, logout functions
-- [ ] 204. Create `src/hooks/use-features.ts`
-- [ ] 205. Implement fetch, create, update, delete functions
-- [ ] 206. Create `src/hooks/use-vote.ts`
-- [ ] 207. Implement vote and remove vote functions
-- [ ] 208. Create `src/hooks/use-debounce.ts`
-- [ ] 209. Add loading and error states to all hooks
+- [x] 202. Create `src/hooks/use-auth.ts`
+- [x] 203. Implement login, register, logout functions
+- [x] 204. Create `src/hooks/use-features.ts`
+- [x] 205. Implement fetch, create, update, delete functions
+- [x] 206. Create `src/hooks/use-vote.ts`
+- [x] 207. Implement vote and remove vote functions
+- [x] 208. Create `src/hooks/use-debounce.ts`
+- [x] 209. Add loading and error states to all hooks
 
 ---
 
