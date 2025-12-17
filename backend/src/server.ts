@@ -3,8 +3,9 @@ import Fastify, { FastifyError, FastifyReply, FastifyRequest } from 'fastify';
 import cors from '@fastify/cors';
 import helmet from '@fastify/helmet';
 import rateLimit from '@fastify/rate-limit';
+import { randomUUID } from 'crypto';
 import { env, connectDatabase } from './config';
-import { logger } from './utils/logger';
+import logger, { maskSensitiveData } from './utils/logger';
 import { AppError } from './errors';
 import { registerRoutes } from './routes';
 
@@ -15,10 +16,15 @@ interface ErrorResponse {
   details?: Record<string, unknown>;
 }
 
+const getLogLevel = (): string => {
+  if (env.LOG_LEVEL) return env.LOG_LEVEL;
+  return env.NODE_ENV === 'development' ? 'debug' : 'info';
+};
+
 const buildServer = async () => {
   const server = Fastify({
     logger: {
-      level: env.LOG_LEVEL,
+      level: getLogLevel(),
       transport:
         env.NODE_ENV === 'development'
           ? {
@@ -30,10 +36,37 @@ const buildServer = async () => {
               },
             }
           : undefined,
+      redact: {
+        paths: [
+          'req.headers.authorization',
+          'req.body.password',
+          'req.body.token',
+          'res.headers["set-cookie"]',
+        ],
+        censor: '[REDACTED]',
+      },
+      serializers: {
+        req(request) {
+          return {
+            method: request.method,
+            url: request.url,
+            headers: maskSensitiveData(request.headers),
+            hostname: request.hostname,
+            remoteAddress: request.ip,
+          };
+        },
+        res(reply) {
+          return {
+            statusCode: reply.statusCode,
+          };
+        },
+      },
     },
+    genReqId: () => randomUUID(),
+    requestIdHeader: 'x-request-id',
+    requestIdLogLabel: 'requestId',
   });
 
-  // Register plugins
   await server.register(cors, {
     origin: env.CORS_ORIGIN,
     credentials: true,
@@ -51,7 +84,7 @@ const buildServer = async () => {
   await registerRoutes(server);
 
   server.setErrorHandler(
-    (error: FastifyError | AppError, _request: FastifyRequest, reply: FastifyReply) => {
+    (error: FastifyError | AppError, request: FastifyRequest, reply: FastifyReply) => {
       const response: ErrorResponse = {
         statusCode: 500,
         error: 'Internal Server Error',
@@ -81,11 +114,20 @@ const buildServer = async () => {
         response.message = error.message;
       }
 
-      // Log server errors
+      const logContext = {
+        err: error,
+        requestId: request.id,
+        method: request.method,
+        url: request.url,
+        statusCode: response.statusCode,
+        // Include stack trace for server errors
+        ...(response.statusCode >= 500 && error.stack ? { stack: error.stack } : {}),
+      };
+
       if (response.statusCode >= 500) {
-        server.log.error({ err: error }, 'Server error');
+        server.log.error(logContext, 'Server error');
       } else {
-        server.log.warn({ err: error }, 'Client error');
+        server.log.warn(logContext, 'Client error');
       }
 
       return reply.status(response.statusCode).send(response);

@@ -187,23 +187,23 @@
 
 ### 5.1 Health Endpoints
 
-- [ ] 135. Create `src/controllers/health.controller.ts`
-- [ ] 136. Implement basic health check returning `{ status: 'ok' }`
-- [ ] 137. Implement readiness check verifying database connection
-- [ ] 138. Implement readiness check verifying cache availability
-- [ ] 139. Create `src/routes/health.routes.ts`
-- [ ] 140. Register GET `/api/health` endpoint
-- [ ] 141. Register GET `/api/health/ready` endpoint
-- [ ] 142. Register health routes in main server
+- [x] 135. Create `src/controllers/health.controller.ts`
+- [x] 136. Implement basic health check returning `{ status: 'ok' }`
+- [x] 137. Implement readiness check verifying database connection
+- [x] 138. Implement readiness check verifying cache availability
+- [x] 139. Create `src/routes/health.routes.ts`
+- [x] 140. Register GET `/api/health` endpoint
+- [x] 141. Register GET `/api/health/ready` endpoint
+- [x] 142. Register health routes in main server
 
 ### 5.2 Request Logging
 
-- [ ] 143. Configure Pino request logging in Fastify
-- [ ] 144. Add request ID generation and tracking
-- [ ] 145. Log request method, URL, status code, response time
-- [ ] 146. Configure log levels per environment (debug for dev, info for prod)
-- [ ] 147. Implement sensitive data masking (passwords, tokens)
-- [ ] 148. Add error logging with stack traces
+- [x] 143. Configure Pino request logging in Fastify
+- [x] 144. Add request ID generation and tracking
+- [x] 145. Log request method, URL, status code, response time
+- [x] 146. Configure log levels per environment (debug for dev, info for prod)
+- [x] 147. Implement sensitive data masking (passwords, tokens)
+- [x] 148. Add error logging with stack traces
 
 ---
 

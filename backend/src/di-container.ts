@@ -20,6 +20,7 @@ import { AuthController, IAuthController } from './controllers/auth.controller';
 import { UserController, IUserController } from './controllers/user.controller';
 import { FeatureController, IFeatureController } from './controllers/feature.controller';
 import { VoteController, IVoteController } from './controllers/vote.controller';
+import { HealthController, IHealthController } from './controllers/health.controller';
 
 import { ICache } from './interfaces/cache.interface';
 import { createCache } from './utils/cache';
@@ -45,6 +46,7 @@ export function configureContainer(): Container {
   container.bind<IUserController>(TYPES.UserController).to(UserController).inSingletonScope();
   container.bind<IFeatureController>(TYPES.FeatureController).to(FeatureController).inSingletonScope();
   container.bind<IVoteController>(TYPES.VoteController).to(VoteController).inSingletonScope();
+  container.bind<IHealthController>(TYPES.HealthController).to(HealthController).inSingletonScope();
 
   return container;
 }
