@@ -291,62 +291,62 @@
 
 ### 7.1 Project Setup
 
-- [ ] 210. Create `mobile/` directory structure
-- [ ] 211. Initialize Expo project with Expo Router
-- [ ] 212. Configure TypeScript in `tsconfig.json`
-- [ ] 213. Install and configure NativeWind
-- [ ] 214. Create `tailwind.config.js`
-- [ ] 215. Configure `metro.config.js` for NativeWind
-- [ ] 216. Configure `babel.config.js`
-- [ ] 217. Install and configure Biome
-- [ ] 218. Create `biome.json`
-- [ ] 219. Create `app.json` Expo configuration
-- [ ] 220. Create `src/app/_layout.tsx` root layout
-- [ ] 221. Create `src/app/index.tsx` entry screen
+- [x] 210. Create `mobile/` directory structure
+- [x] 211. Initialize Expo project with Expo Router
+- [x] 212. Configure TypeScript in `tsconfig.json`
+- [x] 213. Install and configure NativeWind
+- [x] 214. Create `tailwind.config.js`
+- [x] 215. Configure `metro.config.js` for NativeWind
+- [x] 216. Configure `babel.config.js`
+- [x] 217. Install and configure Biome
+- [x] 218. Create `biome.json`
+- [x] 219. Create `app.json` Expo configuration
+- [x] 220. Create `src/app/_layout.tsx` root layout
+- [x] 221. Create `src/app/index.tsx` entry screen
 
 ### 7.2 Secure Storage & API Client
 
-- [ ] 222. Install expo-secure-store
-- [ ] 223. Create `src/lib/secure-store.ts` with token storage
-- [ ] 224. Install Axios
-- [ ] 225. Create `src/lib/api.ts` with mobile-adapted Axios instance
-- [ ] 226. Create `src/lib/config.ts` with API URL config
-- [ ] 227. Create `src/lib/jwt.ts` with decode helpers
-- [ ] 228. Create `src/lib/utils.ts` with `cn()` helper
-- [ ] 229. Adapt auth store to use SecureStore for persistence
-- [ ] 230. Create `src/store/auth.store.ts`
-- [ ] 231. Create `src/store/features.store.ts`
-- [ ] 232. Create `src/store/ui.store.ts`
+- [x] 222. Install expo-secure-store
+- [x] 223. Create `src/lib/secure-store.ts` with token storage
+- [x] 224. Install Axios
+- [x] 225. Create `src/lib/api.ts` with mobile-adapted Axios instance
+- [x] 226. Create `src/lib/config.ts` with API URL config
+- [x] 227. Create `src/lib/jwt.ts` with decode helpers
+- [x] 228. Create `src/lib/utils.ts` with `cn()` helper
+- [x] 229. Adapt auth store to use SecureStore for persistence
+- [x] 230. Create `src/store/auth.store.ts`
+- [x] 231. Create `src/store/features.store.ts`
+- [x] 232. Create `src/store/ui.store.ts`
 
 ### 7.3 Mobile Components
 
-- [ ] 233. Install lucide-react-native
-- [ ] 234. Create `src/components/ui/button.tsx` (React Native)
-- [ ] 235. Create `src/components/ui/input.tsx` (React Native)
-- [ ] 236. Create `src/components/ui/card.tsx` (React Native)
-- [ ] 237. Create `src/components/ui/badge.tsx` (React Native)
-- [ ] 238. Create `src/components/ui/skeleton.tsx` (React Native)
-- [ ] 239. Create `src/components/feature-card.tsx`
-- [ ] 240. Create `src/components/vote-buttons.tsx`
-- [ ] 241. Create `src/components/status-badge.tsx`
-- [ ] 242. Create `src/components/providers.tsx`
+- [x] 233. Install lucide-react-native
+- [x] 234. Create `src/components/ui/button.tsx` (React Native)
+- [x] 235. Create `src/components/ui/input.tsx` (React Native)
+- [x] 236. Create `src/components/ui/card.tsx` (React Native)
+- [x] 237. Create `src/components/ui/badge.tsx` (React Native)
+- [x] 238. Create `src/components/ui/skeleton.tsx` (React Native)
+- [x] 239. Create `src/components/feature-card.tsx`
+- [x] 240. Create `src/components/vote-buttons.tsx`
+- [x] 241. Create `src/components/status-badge.tsx`
+- [x] 242. Create `src/components/providers.tsx`
 
 ### 7.4 Mobile Screens
 
-- [ ] 243. Create `src/app/(auth)/_layout.tsx` auth stack layout
-- [ ] 244. Create `src/app/(auth)/login.tsx`
-- [ ] 245. Create `src/app/(auth)/register.tsx`
-- [ ] 246. Create `src/app/(main)/_layout.tsx` tab navigation layout
-- [ ] 247. Create `src/app/(main)/features/index.tsx` feature list
-- [ ] 248. Create `src/app/(main)/features/new.tsx` create feature
-- [ ] 249. Create `src/app/(main)/features/[id].tsx` feature detail
-- [ ] 250. Create `src/app/(main)/profile/index.tsx` user profile
-- [ ] 251. Implement auth navigation guard
-- [ ] 252. Create `src/hooks/use-auth.ts`
-- [ ] 253. Create `src/hooks/use-features.ts`
-- [ ] 254. Create `src/hooks/use-vote.ts`
-- [ ] 255. Create `src/hooks/use-secure-store.ts`
-- [ ] 256. Create `src/types/` directory with shared types
+- [x] 243. Create `src/app/(auth)/_layout.tsx` auth stack layout
+- [x] 244. Create `src/app/(auth)/login.tsx`
+- [x] 245. Create `src/app/(auth)/register.tsx`
+- [x] 246. Create `src/app/(main)/_layout.tsx` tab navigation layout
+- [x] 247. Create `src/app/(main)/features/index.tsx` feature list
+- [x] 248. Create `src/app/(main)/features/new.tsx` create feature
+- [x] 249. Create `src/app/(main)/features/[id].tsx` feature detail
+- [x] 250. Create `src/app/(main)/profile/index.tsx` user profile
+- [x] 251. Implement auth navigation guard
+- [x] 252. Create `src/hooks/use-auth.ts`
+- [x] 253. Create `src/hooks/use-features.ts`
+- [x] 254. Create `src/hooks/use-vote.ts`
+- [x] 255. Create `src/hooks/use-secure-store.ts`
+- [x] 256. Create `src/types/` directory with shared types
 
 ---
 
