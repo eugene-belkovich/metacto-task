@@ -38,10 +38,6 @@ const featureSchema = new Schema<IFeatureDocument>(
   }
 );
 
-featureSchema.index({ author: 1 });
-
-featureSchema.index({ status: 1 });
-
 featureSchema.index({ voteCount: -1 });
 
 featureSchema.index({ status: 1, voteCount: -1 });

@@ -158,3 +158,5 @@ Proceed with to implement the application according to the tasks listed in tasks
 Add flag for ignoring JWT checks for speed up local testing of apis
 
 Create postman schema with testing data for testing all apis locally
+
+fix mongo issue: duplicate schema index warnings
