@@ -21,7 +21,6 @@ export class AuthController implements IAuthController {
     @inject(TYPES.AuthService) private authService: IAuthService
   ) {}
 
-  // Task 56: Register controller method
   async register(
     request: FastifyRequest<{ Body: RegisterBody }>,
     reply: FastifyReply

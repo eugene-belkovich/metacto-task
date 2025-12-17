@@ -38,16 +38,12 @@ const featureSchema = new Schema<IFeatureDocument>(
   }
 );
 
-// Index on author - Task 30
 featureSchema.index({ author: 1 });
 
-// Index on status - Task 31
 featureSchema.index({ status: 1 });
 
-// Index on voteCount - Task 32
 featureSchema.index({ voteCount: -1 });
 
-// Compound index for common queries
 featureSchema.index({ status: 1, voteCount: -1 });
 featureSchema.index({ author: 1, createdAt: -1 });
 

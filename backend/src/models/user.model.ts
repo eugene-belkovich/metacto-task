@@ -27,7 +27,6 @@ const userSchema = new Schema<IUserDocument>(
   }
 );
 
-// Index on email (unique) - Task 29
 userSchema.index({ email: 1 }, { unique: true });
 
 export const UserModel = mongoose.model<IUserDocument>('User', userSchema);

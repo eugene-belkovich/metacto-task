@@ -91,69 +91,69 @@
 
 ### 3.1 User Management
 
-- [ ] 62. Create `src/services/user.service.ts`
-- [ ] 63. Implement `findById()` method
-- [ ] 64. Implement `findByEmail()` method
-- [ ] 65. Add user response serialization (exclude password)
-- [ ] 66. Create `src/schemas/user.schema.ts`
-- [ ] 67. Create `src/controllers/user.controller.ts`
-- [ ] 68. Implement `getMe()` controller method
-- [ ] 69. Implement `getById()` controller method
-- [ ] 70. Create `src/routes/user.routes.ts`
-- [ ] 71. Register GET `/api/users/me` endpoint (protected)
-- [ ] 72. Register GET `/api/users/:id` endpoint (protected)
-- [ ] 73. Register user routes in main server
+- [x] 62. Create `src/services/user.service.ts`
+- [x] 63. Implement `findById()` method
+- [x] 64. Implement `findByEmail()` method
+- [x] 65. Add user response serialization (exclude password)
+- [x] 66. Create `src/schemas/user.schema.ts`
+- [x] 67. Create `src/controllers/user.controller.ts`
+- [x] 68. Implement `getMe()` controller method
+- [x] 69. Implement `getById()` controller method
+- [x] 70. Create `src/routes/user.routes.ts`
+- [x] 71. Register GET `/api/users/me` endpoint (protected)
+- [x] 72. Register GET `/api/users/:id` endpoint (protected)
+- [x] 73. Register user routes in main server
 
 ### 3.2 Feature Management
 
-- [ ] 74. Create `src/services/feature.service.ts`
-- [ ] 75. Implement `create()` method
-- [ ] 76. Implement `findAll()` method with pagination
-- [ ] 77. Implement `findById()` method
-- [ ] 78. Implement `updateStatus()` method with author check
-- [ ] 79. Implement `delete()` method with author check
-- [ ] 80. Add sorting support (votes, newest, oldest)
-- [ ] 81. Add status filtering support
-- [ ] 82. Create `src/schemas/feature.schema.ts`
-- [ ] 83. Define create feature request schema
-- [ ] 84. Define list features query schema (sort, status, page, limit)
-- [ ] 85. Define update status request schema
-- [ ] 86. Create `src/controllers/feature.controller.ts`
-- [ ] 87. Implement `create()` controller method
-- [ ] 88. Implement `list()` controller method
-- [ ] 89. Implement `getById()` controller method
-- [ ] 90. Implement `updateStatus()` controller method
-- [ ] 91. Implement `delete()` controller method
-- [ ] 92. Create `src/routes/feature.routes.ts`
-- [ ] 93. Register POST `/api/features` endpoint (protected)
-- [ ] 94. Register GET `/api/features` endpoint (public)
-- [ ] 95. Register GET `/api/features/:id` endpoint (public)
-- [ ] 96. Register PATCH `/api/features/:id/status` endpoint (protected)
-- [ ] 97. Register DELETE `/api/features/:id` endpoint (protected)
-- [ ] 98. Register feature routes in main server
+- [x] 74. Create `src/services/feature.service.ts`
+- [x] 75. Implement `create()` method
+- [x] 76. Implement `findAll()` method with pagination
+- [x] 77. Implement `findById()` method
+- [x] 78. Implement `updateStatus()` method with author check
+- [x] 79. Implement `delete()` method with author check
+- [x] 80. Add sorting support (votes, newest, oldest)
+- [x] 81. Add status filtering support
+- [x] 82. Create `src/schemas/feature.schema.ts`
+- [x] 83. Define create feature request schema
+- [x] 84. Define list features query schema (sort, status, page, limit)
+- [x] 85. Define update status request schema
+- [x] 86. Create `src/controllers/feature.controller.ts`
+- [x] 87. Implement `create()` controller method
+- [x] 88. Implement `list()` controller method
+- [x] 89. Implement `getById()` controller method
+- [x] 90. Implement `updateStatus()` controller method
+- [x] 91. Implement `delete()` controller method
+- [x] 92. Create `src/routes/feature.routes.ts`
+- [x] 93. Register POST `/api/features` endpoint (protected)
+- [x] 94. Register GET `/api/features` endpoint (public)
+- [x] 95. Register GET `/api/features/:id` endpoint (public)
+- [x] 96. Register PATCH `/api/features/:id/status` endpoint (protected)
+- [x] 97. Register DELETE `/api/features/:id` endpoint (protected)
+- [x] 98. Register feature routes in main server
 
 ### 3.3 Voting System
 
-- [ ] 99. Create `src/services/vote.service.ts`
-- [ ] 100. Implement `vote()` method (create or update)
-- [ ] 101. Implement `removeVote()` method
-- [ ] 102. Implement `getVoteStats()` method
-- [ ] 103. Implement `getUserVote()` method for checking existing vote
-- [ ] 104. Implement denormalized voteCount update on Feature
-- [ ] 105. Enforce one vote per user per feature constraint
-- [ ] 106. Create `src/schemas/vote.schema.ts`
-- [ ] 107. Define vote request schema (type: UP/DOWN)
-- [ ] 108. Define vote stats response schema
-- [ ] 109. Create `src/controllers/vote.controller.ts`
-- [ ] 110. Implement `vote()` controller method
-- [ ] 111. Implement `removeVote()` controller method
-- [ ] 112. Implement `getStats()` controller method
-- [ ] 113. Create `src/routes/vote.routes.ts`
-- [ ] 114. Register POST `/api/features/:id/vote` endpoint (protected)
-- [ ] 115. Register DELETE `/api/features/:id/vote` endpoint (protected)
-- [ ] 116. Register GET `/api/features/:id/votes` endpoint (public)
-- [ ] 117. Register vote routes in main server
-- [ ] 118. Create `src/routes/index.ts` to aggregate all routes
+- [x] 99. Create `src/services/vote.service.ts`
+- [x] 100. Implement `vote()` method (create or update)
+- [x] 101. Implement `removeVote()` method
+- [x] 102. Implement `getVoteStats()` method
+- [x] 103. Implement `getUserVote()` method for checking existing vote
+- [x] 104. Implement denormalized voteCount update on Feature
+- [x] 105. Enforce one vote per user per feature constraint
+- [x] 106. Create `src/schemas/vote.schema.ts`
+- [x] 107. Define vote request schema (type: UP/DOWN)
+- [x] 108. Define vote stats response schema
+- [x] 109. Create `src/controllers/vote.controller.ts`
+- [x] 110. Implement `vote()` controller method
+- [x] 111. Implement `removeVote()` controller method
+- [x] 112. Implement `getStats()` controller method
+- [x] 113. Create `src/routes/vote.routes.ts`
+- [x] 114. Register POST `/api/features/:id/vote` endpoint (protected)
+- [x] 115. Register DELETE `/api/features/:id/vote` endpoint (protected)
+- [x] 116. Register GET `/api/features/:id/votes` endpoint (public)
+- [x] 117. Register vote routes in main server
+- [x] 118. Create `src/routes/index.ts` to aggregate all routes
 
 ---
 

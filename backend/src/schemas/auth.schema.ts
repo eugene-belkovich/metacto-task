@@ -1,6 +1,5 @@
 import { Type, Static } from '@sinclair/typebox';
 
-// Task 53: Register request/response schema
 export const RegisterBodySchema = Type.Object({
   email: Type.String({ format: 'email' }),
   password: Type.String({ minLength: 8, maxLength: 128 }),
@@ -18,7 +17,6 @@ export const AuthResponseSchema = Type.Object({
 
 export type AuthResponse = Static<typeof AuthResponseSchema>;
 
-// Task 54: Login request/response schema
 export const LoginBodySchema = Type.Object({
   email: Type.String({ format: 'email' }),
   password: Type.String({ minLength: 1 }),
